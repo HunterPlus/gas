@@ -1,5 +1,9 @@
 #
-# gcc -no-pie hello1.s && ./a.out
+# gcc hello1.s && ./a.out
+#
+# gcc -no-pie hello1.s
+# mov $message, %rdi
+# call puts
 #
 
         .globl main
