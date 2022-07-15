@@ -1,6 +1,6 @@
 #
 # struct data { char a; int b; long c; }
-# void f3(struct data *p, int i) {
+# void f4(struct data *p, int i) {
 #	p[i].b = 2;
 # }
 
