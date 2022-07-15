@@ -23,8 +23,9 @@ for:
 	mov	-8(%rbp), %edx
 	add	%edx, -4(%rbp)
 	incl	-8(%rbp)
-	jump	for
+	jmp	for
 end:
+	mov	-4(%rbp), %eax	# return sum
 	mov	%rbp, %rsp
-	pop	$rbp
+	pop	%rbp
 	ret

@@ -59,4 +59,12 @@ imul    src             # dst in %rax, computes 128-bit result, %rdx : %rax
 shl     dst             # dst <<= 1 (sar, shr, sal)
 
 
+cmp     op2, op1        # result = op1 - op2, discard result, sets condition codes
+test    op2, op1        # result = op1 & op2, discards result, sets condition codes
+
+jmp     target          # unconditional jump
+je      target          # jump equal, synonym jz jump zero (ZF = 1)
+jne     target          # jump not equal, synonym jnz jump non zero (ZF = 0)
+jl      target          # jump less than, synonym jnge not greater (SF != OF)
+jle     target          # jump less or equal, synonym jng jump not greater or equal (ZF = 1 or SF != OF)
 
