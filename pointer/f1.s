@@ -1,11 +1,11 @@
 #
-# void f(int *p) {
+# void f1(int *p) {
 #	*p = 2;
 # }
 
-	.globl f
+	.globl f1
 	.text
-f:
+f1:
 	push	%rbp
 	mov	%rsp, %rbp
 
