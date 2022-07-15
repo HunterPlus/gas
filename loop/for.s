@@ -17,7 +17,14 @@ f:
 	sub	$8, %rsp
 	movl	$0, -4(%rbp)	# sum = 0
 	movl	$1, -8(%rbp)	# i = 1
-	
+for:
+	cmp	%edi, -8(%rbp)
+	jg	end
+	mov	-8(%rbp), %edx
+	add	%edx, -4(%rbp)
+	incl	-8(%rbp)
+	jump	for
+end:
 	mov	%rbp, %rsp
 	pop	$rbp
 	ret
