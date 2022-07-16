@@ -21,7 +21,7 @@ w:
         mov     $1, %ecx                # i = 1
 while:
 	cmp	%edi, %ecx
-	jg	end	
+	jg	end			# %ecx > %edi
 	add	%ecx, %eax
 	inc	%ecx
 	jmp	while
