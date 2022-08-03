@@ -60,10 +60,22 @@ main:
 	pop	%rbp
 	ret
 	
-	
+# %rdi - int *v
+# %esi - int n
+
 	.text
 	.globl bubble
 bubble:
+	push	%rbp
+	mov	%rsp, %rbp
+	
+	
+	
+	
+	xor	%rax, %rax
+	mov	%rbp, %rsp
+	pop	%rbp
+	ret
 
 	.text
 	.globl printarray
