@@ -17,6 +17,8 @@ int binsearch(int key, int arr[], int n)
 	return -1;
 }
 */
+# %edi - int key, $rsi - int * arr, %edx - int n
+# low - %ecx, high - %edx, mid - %eax
 
 	.data
 	.text
@@ -25,7 +27,14 @@ binsearch:
 	push	%rbp
 	mov	%rsp, %rbp
 	
+	decl	%edx		# high = n - 1
+while:
+	cmp	%edx, %ecx
+	jg	notfound
 	
+notfound:
+	mov	$-1, %eax
+end:
 	mov	%rbp, %rsp
 	pop	%rbp
 	ret
