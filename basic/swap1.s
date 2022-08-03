@@ -12,7 +12,7 @@ void swap(int *x, int *y)
 
 	.data
 	.text
-	.globl swap
+	.globl 	swap
 swap:
 	push	%rbp
 	mov	%rsp, %rbp
