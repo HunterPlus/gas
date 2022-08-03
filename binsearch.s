@@ -1,3 +1,31 @@
+	.data
+arr:
+    	.int 30, 40, 45, 72, 83
+    	.text
+fmt:
+    	.string "45 at index: %d\n"
+    	.global main
+main:
+	push   	%rbp
+	mov    	%rsp, %rbp
+	
+	lea     arr(%rip), %rdi
+	mov     $5, %esi
+	mov     $45, %edx
+	call    binsearch
+	
+	mov     %eax, %esi
+	xor     %rax, %rax
+	lea     fmt(%rip), %rdi
+	call    printf@plt
+	
+	
+	xor	%rax, %rax
+	mov     %rbp, %rsp
+	pop     %rbp
+	ret
+	
+
 /*
 int binsearch(int arr[], int n, int key)
 {
