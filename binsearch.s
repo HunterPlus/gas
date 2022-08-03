@@ -38,7 +38,8 @@ while:
 	mov	%ecx, %eax
 	add	%esi, %eax
 	shr	$1, %eax		# mid = (low + high) / 2
-	cmp	(%rdi, %eax, 4), %edx
+	cltq
+	cmp	(%rdi, %rax, 4), %edx
 	je	end			# key found
 	jg	right
 	mov	%eax, %esi
