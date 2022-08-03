@@ -103,16 +103,19 @@ printarray:
 	push	%rbp
 	mov	%rsp, %rbp
 	
-	mov	%rdi, %rdx
-	mov	%esi, %ecx
+	sub	$16, %rsp
+	mov	%rdi, -8(%rbp)
+	mov	%esi, -12(%rbp)
+	
 .L4:				#loop
-	dec	%ecx
+	decl	-12(%rbp)
 	js	.L5		# goto end
 	xor	%rax, %rax
 	lea	.L6(%rip), %rdi
+	mov	-8(%rbp), %rdx
 	mov	(%rdx), %esi
 	call	printf@plt
-	lea	4(%rdx), %rdx
+	add	$4, -8(%rbp)
 	jmp	.L4		# goto loop	
 .L5:				# end
 	xor	%rax, %rax
