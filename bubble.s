@@ -50,6 +50,16 @@ main:
 	lea     fmt(%rip), %rdi
 	call    printf@plt
 	
+	xor	%rax, %rax
+	lea	arr(%rip), %rdi
+	mov	$7, %esi
+	call	printarray
+	
+	xor	%rax, %rax
+	mov	%rbp, %rsp
+	pop	%rbp
+	ret
+	
 	
 	.text
 	.globl bubble
