@@ -71,10 +71,24 @@ bubble:
 	
 	cmp	$1, %esi
 	jle	end
-	
-	
-	
-	
+	dec	%esi
+	mov	%esi, %edx
+	mov	%rdi, %rcx
+loop:
+	mov	(%rcx), %eax
+	cmp	%eax, 4(%rcx)
+	jge	skip
+	xchg	%eax, 4(%rcx)
+	mov	%eax, (%rcx)
+skip:
+	add	$4, %rcx
+	dec	%edx
+	jnz	loop
+	dec	%esi
+	jz	end
+	mov	%rdi, %rcx
+	mov	%esi, %edx
+	jmp	loop	
 end:
 	xor	%rax, %rax
 	mov	%rbp, %rsp
