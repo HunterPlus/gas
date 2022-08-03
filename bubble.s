@@ -35,7 +35,7 @@ int main()
 arr:
     	.int 64, 34, 25, 12, 22, 11, 90
     	.text
-fmt:
+.L0:
     	.string "Sorted array: \n"
     	.global main
 main:
@@ -47,7 +47,7 @@ main:
 	call    bubble
 	
 	xor     %rax, %rax
-	lea     fmt(%rip), %rdi
+	lea     .L0(%rip), %rdi
 	call    printf@plt
 	
 	xor	%rax, %rax
@@ -70,34 +70,63 @@ bubble:
 	mov	%rsp, %rbp
 	
 	cmp	$1, %esi
-	jle	end
+	jle	.L3		# goto end
 	dec	%esi
 	mov	%esi, %edx
 	mov	%rdi, %rcx
-loop:
+.L1:				# loop
 	mov	(%rcx), %eax
 	cmp	%eax, 4(%rcx)
-	jge	skip
+	jge	.L2		# goto skip
 	xchg	%eax, 4(%rcx)
 	mov	%eax, (%rcx)
-skip:
+.L2:				# skip
 	add	$4, %rcx
 	dec	%edx
-	jnz	loop
+	jnz	.L1		# goto loop
 	dec	%esi
-	jz	end
+	jz	.L3
 	mov	%rdi, %rcx
 	mov	%esi, %edx
-	jmp	loop	
-end:
+	jmp	.L1		# goto loop
+.L3:				# end
 	xor	%rax, %rax
 	mov	%rbp, %rsp
 	pop	%rbp
 	ret
 
+# %rdi - int *arr
+# %esi - int n
 	.text
 	.globl printarray
 printarray:
+	push	%rbp
+	mov	%rsp, %rbp
+	
+	mov	%rdi, %rdx
+	mov	%esi, %ecx
+.L4				#loop
+	dec	%ecx
+	js	.L5		# goto end
+	xor	%rax, %rax
+	lea	.L6(%rip), %rdi
+	mov	(%rdx), %esi
+	call	printf@plt
+	lea	4(%rdx), %rdx
+	jmp	.L4		# goto loop	
+.L5:				# end
+	xor	%rax, %rax
+	lea	.L7(%rip), %rdi
+	call	printf@plt
+	
+	xor	%rax, %rax
+	mov	%rbp, %rsp
+	pop	%rbp
+	ret
+.L6
+	.string "%d "
+.L7	
+	.string "\n"
 
 
 
