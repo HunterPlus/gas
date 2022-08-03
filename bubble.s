@@ -69,9 +69,13 @@ bubble:
 	push	%rbp
 	mov	%rsp, %rbp
 	
+	cmp	$1, %esi
+	jle	end
 	
 	
 	
+	
+end:
 	xor	%rax, %rax
 	mov	%rbp, %rsp
 	pop	%rbp
