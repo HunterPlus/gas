@@ -105,7 +105,7 @@ printarray:
 	
 	mov	%rdi, %rdx
 	mov	%esi, %ecx
-.L4				#loop
+.L4:				#loop
 	dec	%ecx
 	js	.L5		# goto end
 	xor	%rax, %rax
@@ -123,9 +123,9 @@ printarray:
 	mov	%rbp, %rsp
 	pop	%rbp
 	ret
-.L6
+.L6:
 	.string "%d "
-.L7	
+.L7:	
 	.string "\n"
 
 
