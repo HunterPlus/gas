@@ -27,7 +27,7 @@ int power(int b, int n)
 {
         int     i, val;
         
-        sum = 1;
+        val = 1;
         for (i = 0, i < n; i++)
                 val *= b;
 }
