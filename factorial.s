@@ -18,7 +18,7 @@ main:
 	pop     %rbp
 	ret
 fmt:
-        .string "4! = %ld\n"
+        .string "4! = %lu\n"
 
 /*
 unsigned long factorial(unsigned n)
