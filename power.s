@@ -38,7 +38,7 @@ int power(int b, int n)
         .text
         .globl power
 power:
-        push   %rbp
+        push   	%rbp
         mov     %rsp, %rbp
         
         mov     $1, %rax        # default return value 
