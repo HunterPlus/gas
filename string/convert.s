@@ -45,8 +45,8 @@ convert:
         cmp     $'z', %bl
         jg      .L1
         sub     $0x20, %bl
-.L1:
         mov     %bl, (%rdi)
+.L1:
         inc     %rdi
         jmp     .L0
 .L2:
