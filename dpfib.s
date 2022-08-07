@@ -22,16 +22,17 @@ fmt:
 /*
 int fib (int n)
 {
-    int *table = (int *)malloc((n+1) * sizeof(int));	
+        int *table = (int *)malloc((n+1) * sizeof(int));	
 
-    table[0] = 0;
-    table[1] = 1;
-    for (int i = 2; i <= n; i++)
-        table[i] = table[i - 1] + table[i - 2];    
-    return table[n];
+        table[0] = 0;
+        table[1] = 1;
+        for (int i = 2; i <= n; i++)
+                table[i] = table[i - 1] + table[i - 2];    
+        return table[n];
 }
 
 void *malloc(size_t size);
+void free(void *ptr);
 */
 
 # %edi - int n
@@ -57,7 +58,7 @@ fib1:
 .L0:  
         mov     -4(%rax), %r10d
         add     (%rax), %r10d
-        mov     %r10d, 4(%rax)           # table[i] = table[i-1] + tabel[i=2]
+        mov     %r10d, 4(%rax)           # table[i] = table[i-1] + tabel[i-2]
         add     $4, %rax
         loop    .L0
 
