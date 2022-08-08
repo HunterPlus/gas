@@ -31,6 +31,7 @@ main:
         xor     %rax, %rax
         mov     %rbp, %rsp
         pop     %rbp
+	ret
 
 /*
 void printarray(int arr[], int n)
