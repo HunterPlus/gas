@@ -16,6 +16,9 @@ struct node *newnode(int x)
     	n->next = NULL;
     	return n;
 }
+
+int fprintf(FILE *restrict stream, const char *restrict format, ...);
+void exit(int status);
 */
 
 # %edi - int x

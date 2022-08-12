@@ -16,7 +16,7 @@ main:
 	cmpq    $3, -8(%rbp)
 	je      .L1
 	mov     -8(%rbp), %rax
-	lea     -32(%rbp, %rax, 8), %rdi        # tid[i]
+	lea     -32(%rbp, %rax, 8), %rdi        # &tid[i]
 	mov     $0, %rsi                        # NULL
 	lea     hello(%rip), %rdx               # thread
 	lea     -64(%rbp, %rax, 8), %rax
@@ -25,10 +25,10 @@ main:
 	incq    -8(%rbp)
 	jmp     .L0
 .L1:
-        decq    -8(%rbp)                        # i = 2
+        decq    -8(%rbp)                        # i = 2, 1, 0
         js      .L2
         mov     -8(%rbp), %rax
-        lea     -32(%rbp, %rax, 8), %rax        # pointer to tid[i]
+        lea     -32(%rbp, %rax, 8), %rax        # &tid[i]
 	mov     (%rax), %rdi                    # tid[i]
 	mov     $0, %rsi                        # NULL
 	call    pthread_join@plt
