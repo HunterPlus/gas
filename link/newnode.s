@@ -32,7 +32,7 @@ newnode:
         call    malloc@plt
         test    %rax, %rax              # pointer == NULL ?
         jnz     .L0
-        mov     $2, %edi                # stderr
+        mov     stderr(%rip), %rdi      # FILE pointer to stderr
         lea     errs(%rip), %rsi        # error string
         xor     %rax, %rax
         call    fprintf@plt
@@ -49,5 +49,5 @@ newnode:
         pop     %rbp
         ret
 errs:
-        .string "newnode: malloc error"
+        .string "newnode: malloc error\n"
 
