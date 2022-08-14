@@ -20,29 +20,25 @@ main:
 .L0:
         sub     $16, %rsp
         mov     %rsi, -8(%rbp)          # save argv
-        lea     8(%rsi), %rdi           # &argv[1]
-        mov     (%rdi), %rdi            # argv[1]
+        mov     8(%rsi), %rdi           # argv[1]       
         mov     $0, %esi
         call    open@plt
         cmp     $-1, %eax
         jne     .L1
-        mov     -8(%rbp), %rsi
-        lea     8(%rsi), %rsi
-        mov     (%rsi), %rdx
+        mov     -8(%rbp), %rdx
+        mov     8(%rdx), %rdx        
         lea     str2(%rip), %rsi
         jmp     doerr
 .L1:
         mov     %eax, -12(%rbp)         # save fdold
-        mov     -8(%rbp), %rsi
-        lea     16(%rsi), %rdi
-        mov     (%rdi), %rdi            # argv[2]
+        mov     -8(%rbp), %rdi
+        mov     16(%rdi), %rdi          # argv[2]        
         mov     $0666, %esi             # octal
         call    creat@plt
         cmp     $-1, %eax
         jne     .L2
-        mov     -8(%rbp), %rsi
-        lea     16(%rsi), %rsi
-        mov     (%rsi), %rdx
+        mov     -8(%rbp), %rdx
+        mov     16(%rdx), %rdx        
         lea     str3(%rip), %rsi
         jmp     doerr
 .L2:
