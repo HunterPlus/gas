@@ -2,7 +2,7 @@
 void enqueue(void *x);
 void *dequeue();
 */
-       
+        .data
 .local  buf
         .comm   buf, 128, 8     # name, size, align
 .local  front

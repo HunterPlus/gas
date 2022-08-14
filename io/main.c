@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 
-
 #define PERMS 0666      /* RW for owner, group, others */
 
 void copy(int old, int new);
@@ -28,5 +27,3 @@ int main(int argc, char *argv[])
         copy(fdold, fdnew);
         return 0;
 }
-
-
